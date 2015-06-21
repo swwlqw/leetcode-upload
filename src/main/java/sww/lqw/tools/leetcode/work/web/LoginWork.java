@@ -40,8 +40,14 @@ public class LoginWork extends AbstractContextWork {
 		inputPassword.setText(config.getPassword());
 
 		HtmlPage next = button.click();
-		System.out.println(next.asText());
-		context.login(webClient);
+		String origin = next.asText();
+		if (origin.contains("Successfully signed in")){
+			System.out.format("Successfully logged in as %s\n", config.getUsername());
+			context.login(webClient);
+		}else{
+			webClient.close();
+			throw new LogFailedException();
+		}
 	}
 
 }
