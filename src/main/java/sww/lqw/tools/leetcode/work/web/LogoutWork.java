@@ -14,6 +14,7 @@ public class LogoutWork extends AbstractContextWork {
 		}else{
 			webClient.close();
 			context.logout();
+			System.out.println("Successfully logged out!");
 		}
 	}
 	
