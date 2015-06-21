@@ -8,7 +8,7 @@ public class Works {
 	private static final Map<String, IWork> workMap = new HashMap<>();
 
 	static {
-
+		workMap.put("exit", new ExitWork());
 	}
 
 	public static IWork getWorkByCommand(String cmd) {
