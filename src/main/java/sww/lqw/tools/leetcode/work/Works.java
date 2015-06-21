@@ -3,6 +3,7 @@ package sww.lqw.tools.leetcode.work;
 import java.util.HashMap;
 import java.util.Map;
 
+import sww.lqw.tools.leetcode.work.command.CloneWork;
 import sww.lqw.tools.leetcode.work.web.AcceptListWork;
 import sww.lqw.tools.leetcode.work.web.LoginWork;
 import sww.lqw.tools.leetcode.work.web.LogoutWork;
@@ -16,7 +17,8 @@ public class Works {
 		workMap.put("login", new LoginWork());
 		workMap.put("logout", new LogoutWork());
 		workMap.put("acceptlist", new AcceptListWork());
-
+		workMap.put("clone", new CloneWork());
+		
 	}
 
 	public static IWork getWorkByCommand(String cmd) {

@@ -15,7 +15,7 @@ public class RunTest {
 		Method load = clz.getDeclaredMethod("loadConfig");
 		load.setAccessible(true);
 		load.invoke(null);
-		String[] tasks = new String[] { "login", "acceptlist" };
+		String[] tasks = new String[] { "clone" };
 		for (String task : tasks) {
 			Works.getWorkByCommand(task).run();
 		}
