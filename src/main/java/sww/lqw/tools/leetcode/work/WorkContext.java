@@ -1,5 +1,9 @@
 package sww.lqw.tools.leetcode.work;
 
+import java.util.TreeSet;
+
+import sww.lqw.tools.leetcode.bean.Problem;
+
 import com.gargoylesoftware.htmlunit.WebClient;
 
 public class WorkContext {
@@ -11,6 +15,7 @@ public class WorkContext {
 	}
 
 	private WebClient webClient;
+	private TreeSet<Problem> acceptList;
 	
 	private WorkContext() {
 	}
@@ -24,6 +29,15 @@ public class WorkContext {
 	}
 	
 	public void logout(){
-		webClient = null;
+		this.webClient = null;
 	}
+
+	public TreeSet<Problem> getAcceptList() {
+		return acceptList;
+	}
+
+	public void setAcceptList(TreeSet<Problem> acceptList) {
+		this.acceptList = acceptList;
+	}
+	
 }
