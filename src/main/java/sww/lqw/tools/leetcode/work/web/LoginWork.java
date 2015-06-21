@@ -4,6 +4,7 @@ import java.util.List;
 
 import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
+import sww.lqw.tools.leetcode.work.WorkException;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -46,7 +47,7 @@ public class LoginWork extends AbstractContextWork {
 			context.login(webClient);
 		}else{
 			webClient.close();
-			throw new LogFailedException();
+			throw new WorkException("Login Failed!");
 		}
 	}
 
