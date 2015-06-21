@@ -66,7 +66,7 @@ public class Main {
 					work.run();
 				} catch (Exception e) {
 					System.out.format("Failed run task \"%s\"\n", cmd);
-					e.printStackTrace();
+					e.printStackTrace(System.out);
 				}
 			}
 			System.out.print('>');
