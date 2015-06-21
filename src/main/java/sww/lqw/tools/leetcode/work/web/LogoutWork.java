@@ -9,7 +9,7 @@ public class LogoutWork extends AbstractContextWork {
 	@Override
 	public void run() throws Exception {
 		WebClient webClient = context.getWebClient();
-		if (context == null) {
+		if (webClient == null) {
 			System.out.println("You have not logged in yet!");
 		}else{
 			webClient.close();
