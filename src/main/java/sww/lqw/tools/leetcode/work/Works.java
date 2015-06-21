@@ -11,8 +11,8 @@ public class Works {
 
 	}
 
-	public static Map<String, IWork> getWorkmap() {
-		return workMap;
+	public static IWork getWorkByCommand(String cmd) {
+		return workMap.get(cmd);
 	}
 
 }
