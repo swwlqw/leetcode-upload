@@ -55,6 +55,7 @@ public class Main {
 	 */
 	private static void startWork() {
 		Scanner scan  = new Scanner(System.in);
+		System.out.print('>');
 		while (scan.hasNext()){
 			String cmd = scan.next();
 			IWork work = Works.getWorkByCommand(cmd);
@@ -68,6 +69,7 @@ public class Main {
 					e.printStackTrace();
 				}
 			}
+			System.out.print('>');
 		}
 		scan.close();
 	}
