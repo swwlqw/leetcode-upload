@@ -7,6 +7,6 @@ package sww.lqw.tools.leetcode.work;
  */
 public interface IWork {
 	
-	void run(WorkContext context) throws Exception;
+	void run() throws Exception;
 	
 }
