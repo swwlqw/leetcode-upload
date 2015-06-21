@@ -23,4 +23,7 @@ public class WorkContext {
 		this.webClient = webClient;
 	}
 	
+	public void logout(){
+		webClient = null;
+	}
 }

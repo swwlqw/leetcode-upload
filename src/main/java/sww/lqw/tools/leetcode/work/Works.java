@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import sww.lqw.tools.leetcode.work.web.LoginWork;
+import sww.lqw.tools.leetcode.work.web.LogoutWork;
 
 public class Works {
 
@@ -12,6 +13,7 @@ public class Works {
 	static {
 		workMap.put("exit", new ExitWork());
 		workMap.put("login", new LoginWork());
+		workMap.put("logout", new LogoutWork());
 
 	}
 
