@@ -5,6 +5,10 @@ import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Properties;
+import java.util.Scanner;
+
+import sww.lqw.tools.leetcode.work.IWork;
+import sww.lqw.tools.leetcode.work.Works;
 
 
 public class Main {
@@ -32,6 +36,8 @@ public class Main {
 				field.set(runConfig, value);
 			}
 		}
+		System.out.println("Successfully Read Config.");
+		System.out.println(runConfig);
 	}
 	
 	public static void main(String[] args) {
@@ -41,8 +47,29 @@ public class Main {
 			e.printStackTrace();
 			return;
 		}
-		System.out.println("Successfully Read Config");
-		System.out.println(RunConfig.getRunConfig());
+		startWork();
+	}
+
+	/**
+	 * read command from stdin, execute the work. 
+	 */
+	private static void startWork() {
+		Scanner scan  = new Scanner(System.in);
+		while (scan.hasNext()){
+			String cmd = scan.next();
+			IWork work = Works.getWorkByCommand(cmd);
+			if (work == null){
+				System.out.format("No such command \"%s\"\n", cmd);
+			}else{
+				try {
+					work.run();
+				} catch (Exception e) {
+					System.out.format("Failed run task \"%s\"\n", cmd);
+					e.printStackTrace();
+				}
+			}
+		}
+		scan.close();
 	}
 
 }
