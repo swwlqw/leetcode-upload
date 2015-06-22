@@ -1,6 +1,5 @@
 package sww.lqw.tools.leetcode.work.web;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -35,7 +34,6 @@ public class AcceptListWork extends AbstractContextWork {
 		HtmlTable table = (HtmlTable) page.getElementById("problemList");
 		HtmlTableBody body = table.getBodies().get(0);
 		TreeSet<String> acceptList = new TreeSet<>();
-		HashMap<String, Problem> problems = new HashMap<String, Problem>();
 		List<HtmlTableRow> rows = body.getRows();
 		for (HtmlTableRow row : rows) {
 			HtmlTableCell cell = row.getCell(0);
@@ -49,7 +47,7 @@ public class AcceptListWork extends AbstractContextWork {
 				Problem p = new Problem();
 				p.setHref(href);
 				acceptList.add(title);
-				problems.put(title, p);
+				context.addProblem(title, p);
 			}
 		}
 		context.setAcceptList(acceptList);
