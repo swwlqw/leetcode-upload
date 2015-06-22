@@ -6,6 +6,7 @@ import java.util.Map;
 import sww.lqw.tools.leetcode.work.command.CloneWork;
 import sww.lqw.tools.leetcode.work.command.StatusWork;
 import sww.lqw.tools.leetcode.work.web.AcceptListWork;
+import sww.lqw.tools.leetcode.work.web.GetCodeWork;
 import sww.lqw.tools.leetcode.work.web.LoginWork;
 import sww.lqw.tools.leetcode.work.web.LogoutWork;
 import sww.lqw.tools.leetcode.work.web.SubmissionWork;
@@ -22,6 +23,7 @@ public class Works {
 		workMap.put("clone", new CloneWork());
 		workMap.put("status", new StatusWork());
 		workMap.put("submission", new SubmissionWork());
+		workMap.put("getcode", new GetCodeWork());
 
 	}
 
