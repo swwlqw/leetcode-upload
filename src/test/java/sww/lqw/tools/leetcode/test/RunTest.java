@@ -1,4 +1,4 @@
-package sww.lqw.tools.leetcode.web.test;
+package sww.lqw.tools.leetcode.test;
 
 import java.lang.reflect.Method;
 
