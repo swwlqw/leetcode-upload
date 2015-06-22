@@ -18,7 +18,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlTableCell;
 import com.gargoylesoftware.htmlunit.html.HtmlTableRow;
 
 /**
- * get the code from leetcode submissions
+ * get submissions from leetcode
  * 
  * @author quanwei.lqw
  *
@@ -59,11 +59,11 @@ public class SubmissionWork extends AbstractContextWork {
 			}
 			p.setMapLangToHref(map);
 			System.out.format(" | %s | %s\n", title, JSON.toJSON(map.keySet()));
-			if (p.ok()){
+			if (p.ok()) {
 				okList.add(title);
 			}
 		}
-		
+
 		context.setOkList(okList);
 		System.out.format("Successfully Obtain the Ok List (%d/%d).\n", okList.size(), toUploadList.size());
 		int i = 1;
