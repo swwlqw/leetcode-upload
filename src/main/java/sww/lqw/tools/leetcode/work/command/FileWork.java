@@ -9,7 +9,7 @@ import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
 
 /**
- * generate
+ * generate files
  * 
  * @author quanwei.lqw
  *
@@ -43,6 +43,8 @@ public class FileWork extends AbstractContextWork {
 			Commands.exec("git push", dir);
 			System.out.format("Successfully push File \"%s\"\n", fileName);
 		}
+		context.setOkList(null);
+		context.getToLinkList().addAll(okList);
 	}
 
 }
