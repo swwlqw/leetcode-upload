@@ -16,8 +16,12 @@ public class WorkContext {
 	}
 
 	private WebClient webClient;
+	
+ 	private HashMap<String, Problem> problems = new HashMap<String, Problem>();
+
 	private TreeSet<String> acceptList;
-	private HashMap<String, Problem> problems = new HashMap<String, Problem>();
+	private TreeSet<String> toUploadList;
+	private TreeSet<String> toLinkList;
 	
 	private WorkContext() {
 	}
@@ -48,6 +52,22 @@ public class WorkContext {
 
 	public void setProblems(HashMap<String, Problem> problems) {
 		this.problems = problems;
+	}
+
+	public TreeSet<String> getToUploadList() {
+		return toUploadList;
+	}
+
+	public void setToUploadList(TreeSet<String> toUploadList) {
+		this.toUploadList = toUploadList;
+	}
+
+	public TreeSet<String> getToLinkList() {
+		return toLinkList;
+	}
+
+	public void setToLinkList(TreeSet<String> toLinkList) {
+		this.toLinkList = toLinkList;
 	}
 	
 }
