@@ -80,7 +80,6 @@ public class GetCodeWork extends AbstractContextWork {
 			for (Entry<String, String> entry : p.getMapLangToHref().entrySet()) {
 				String language = entry.getKey();
 				String codeUrl = String.format("https://leetcode.com%s", entry.getValue());
-				System.out.println(codeUrl);
 				HtmlPage resultPage = webClient.getPage(codeUrl);
 
 				String origin = resultPage.asXml();
