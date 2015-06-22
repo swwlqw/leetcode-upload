@@ -64,6 +64,7 @@ public class SubmissionWork extends AbstractContextWork {
 			}
 		}
 		
+		context.setOkList(okList);
 		System.out.format("Successfully Obtain the Ok List (%d/%d).\n", okList.size(), toUploadList.size());
 		int i = 1;
 		for (String title : okList) {

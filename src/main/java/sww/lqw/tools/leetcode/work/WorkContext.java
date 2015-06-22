@@ -22,7 +22,8 @@ public class WorkContext {
 	private TreeSet<String> acceptList;
 	private TreeSet<String> toUploadList;
 	private TreeSet<String> toLinkList;
-	
+	private TreeSet<String> okList;
+
 	private WorkContext() {
 	}
 
@@ -68,6 +69,14 @@ public class WorkContext {
 
 	public void setToLinkList(TreeSet<String> toLinkList) {
 		this.toLinkList = toLinkList;
+	}
+
+	public TreeSet<String> getOkList() {
+		return okList;
+	}
+
+	public void setOkList(TreeSet<String> okList) {
+		this.okList = okList;
 	}
 	
 }
