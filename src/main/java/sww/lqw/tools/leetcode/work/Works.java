@@ -6,6 +6,7 @@ import java.util.Map;
 import sww.lqw.tools.leetcode.work.command.CloneWork;
 import sww.lqw.tools.leetcode.work.command.FileWork;
 import sww.lqw.tools.leetcode.work.command.LinkWork;
+import sww.lqw.tools.leetcode.work.command.MergeWork;
 import sww.lqw.tools.leetcode.work.command.StatusWork;
 import sww.lqw.tools.leetcode.work.web.AcceptListWork;
 import sww.lqw.tools.leetcode.work.web.GetCodeWork;
@@ -28,7 +29,7 @@ public class Works {
 		workMap.put("getcode", new GetCodeWork());
 		workMap.put("file", new FileWork());
 		workMap.put("link", new LinkWork());
-
+		workMap.put("merge", new MergeWork());
 	}
 
 	public static IWork getWorkByCommand(String cmd) {
