@@ -64,7 +64,7 @@ public class GetCodeWork extends AbstractContextWork {
 				}
 				scan.close();
 				String out = sb.toString().replaceAll(" +", " ");
-				out = out.replaceAll("<p.*>", ">");
+				out = out.replaceAll("<p[^>]*>", ">");
 				out = out.replaceAll("</p>", "");
 				if (!out.trim().equals(">")) {
 					descriptions.add(out);
