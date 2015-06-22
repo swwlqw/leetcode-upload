@@ -38,7 +38,7 @@ public class FileWork extends AbstractContextWork {
 			String addCmd = String.format("git add \"%s\"", fileName);
 			Commands.exec(addCmd, dir);
 			String autoMessage = "Auto commit by https://github.com/swwlqw/leetcode-upload";
-			String commitCmd = String.format("git commit -m \"Create %s(%s)\"", fileName, autoMessage);
+			String commitCmd = String.format("git commit -m \"Create %s (%s)\"", fileName, autoMessage);
 			Commands.exec(commitCmd, dir);
 			Commands.exec("git push", dir);
 			System.out.format("Successfully push File \"%s\"\n", fileName);
