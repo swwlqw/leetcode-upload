@@ -15,6 +15,7 @@ public class CloneWork implements IWork {
 		RunConfig config = RunConfig.getRunConfig();
 		Commands.exec("rm -fR leetcode");
 		Commands.exec("git clone " + config.getCloneUrl());
+		System.out.println("Successfully clone project from remote.");
 	}
 	
 }
