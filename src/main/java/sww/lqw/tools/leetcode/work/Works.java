@@ -8,6 +8,7 @@ import sww.lqw.tools.leetcode.work.command.StatusWork;
 import sww.lqw.tools.leetcode.work.web.AcceptListWork;
 import sww.lqw.tools.leetcode.work.web.LoginWork;
 import sww.lqw.tools.leetcode.work.web.LogoutWork;
+import sww.lqw.tools.leetcode.work.web.SubmissionWork;
 
 public class Works {
 
@@ -20,7 +21,8 @@ public class Works {
 		workMap.put("acceptlist", new AcceptListWork());
 		workMap.put("clone", new CloneWork());
 		workMap.put("status", new StatusWork());
-		
+		workMap.put("submission", new SubmissionWork());
+
 	}
 
 	public static IWork getWorkByCommand(String cmd) {
