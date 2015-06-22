@@ -7,6 +7,8 @@ import java.lang.reflect.Modifier;
 import java.util.Properties;
 import java.util.Scanner;
 
+import com.alibaba.fastjson.JSON;
+
 import sww.lqw.tools.leetcode.work.IWork;
 import sww.lqw.tools.leetcode.work.Works;
 
@@ -61,6 +63,7 @@ public class Main {
 			IWork work = Works.getWorkByCommand(cmd);
 			if (work == null){
 				System.out.format("No such command \"%s\"\n", cmd);
+				System.out.println(JSON.toJSON(Works.getCommands()));
 			}else{
 				try {
 					work.run();

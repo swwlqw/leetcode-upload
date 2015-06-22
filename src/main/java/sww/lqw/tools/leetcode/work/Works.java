@@ -2,6 +2,7 @@ package sww.lqw.tools.leetcode.work;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import sww.lqw.tools.leetcode.work.command.CloneWork;
 import sww.lqw.tools.leetcode.work.command.FileWork;
@@ -37,4 +38,7 @@ public class Works {
 		return workMap.get(cmd);
 	}
 
+	public static Set<String> getCommands(){
+		return workMap.keySet();
+	}
 }
