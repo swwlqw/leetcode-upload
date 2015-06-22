@@ -2,6 +2,7 @@ package sww.lqw.tools.leetcode.bean;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class Problem {
 
@@ -44,5 +45,33 @@ public class Problem {
 
 	public boolean ok() {
 		return mapLangToHref != null && mapLangToHref.size() >= 3;
+	}
+	
+	public String toFileString(String title){
+		StringBuilder sb = new StringBuilder();
+		sb.append("# ");
+		sb.append(title);
+		sb.append("\n\n");
+		
+		for (String description : descriptions){
+			sb.append(description);
+			sb.append("\n\n");
+		}
+		
+		for (Entry<String, String> entry : mapLangToCode.entrySet()) {
+			String language = entry.getKey();
+			String code = entry.getValue();
+			sb.append("## ");
+			sb.append(language);
+			sb.append("\n\n");
+			sb.append("```");
+			sb.append(language);
+			sb.append('\n');
+			sb.append(code);
+			sb.append('\n');
+			sb.append("```\n\n");
+		}
+		sb.setLength(sb.length()-2);
+		return sb.toString();
 	}
 }
