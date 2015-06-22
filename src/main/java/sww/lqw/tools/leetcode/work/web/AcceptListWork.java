@@ -1,5 +1,6 @@
 package sww.lqw.tools.leetcode.work.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -33,7 +34,8 @@ public class AcceptListWork extends AbstractContextWork {
 		HtmlPage page = webClient.getPage("https://leetcode.com/problemset/algorithms/");
 		HtmlTable table = (HtmlTable) page.getElementById("problemList");
 		HtmlTableBody body = table.getBodies().get(0);
-		TreeSet<Problem> acceptList = new TreeSet<>();
+		TreeSet<String> acceptList = new TreeSet<>();
+		HashMap<String, Problem> problems = new HashMap<String, Problem>();
 		List<HtmlTableRow> rows = body.getRows();
 		for (HtmlTableRow row : rows) {
 			HtmlTableCell cell = row.getCell(0);
@@ -46,15 +48,15 @@ public class AcceptListWork extends AbstractContextWork {
 				String title = a.getTextContent();
 				Problem p = new Problem();
 				p.setHref(href);
-				p.setTitle(title);
-				acceptList.add(p);
+				acceptList.add(title);
+				problems.put(title, p);
 			}
 		}
 		context.setAcceptList(acceptList);
 		System.out.format("Successfully Obtain the Accept List (%d/%d).\n", acceptList.size(), rows.size());
 		int i = 1;
-		for (Problem p : acceptList) {
-			System.out.format(" %d\t%s\n", i++, p.getTitle());
+		for (String title : acceptList) {
+			System.out.format(" | %d\t| %s\n", i++, title);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package sww.lqw.tools.leetcode.work;
 
+import java.util.HashMap;
 import java.util.TreeSet;
 
 import sww.lqw.tools.leetcode.bean.Problem;
@@ -15,7 +16,8 @@ public class WorkContext {
 	}
 
 	private WebClient webClient;
-	private TreeSet<Problem> acceptList;
+	private TreeSet<String> acceptList;
+	private HashMap<String, Problem> problems = new HashMap<String, Problem>();
 	
 	private WorkContext() {
 	}
@@ -32,12 +34,20 @@ public class WorkContext {
 		this.webClient = null;
 	}
 
-	public TreeSet<Problem> getAcceptList() {
+	public TreeSet<String> getAcceptList() {
 		return acceptList;
 	}
 
-	public void setAcceptList(TreeSet<Problem> acceptList) {
+	public void setAcceptList(TreeSet<String> acceptList) {
 		this.acceptList = acceptList;
+	}
+
+	public HashMap<String, Problem> getProblems() {
+		return problems;
+	}
+
+	public void setProblems(HashMap<String, Problem> problems) {
+		this.problems = problems;
 	}
 	
 }
