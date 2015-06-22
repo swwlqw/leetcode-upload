@@ -30,6 +30,7 @@ public class Works {
 		workMap.put("file", new FileWork());
 		workMap.put("link", new LinkWork());
 		workMap.put("merge", new MergeWork());
+		workMap.put("autorun", new AutoRunWork());
 	}
 
 	public static IWork getWorkByCommand(String cmd) {
