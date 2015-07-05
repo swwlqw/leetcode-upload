@@ -11,6 +11,7 @@ import sww.lqw.tools.leetcode.work.command.MergeWork;
 import sww.lqw.tools.leetcode.work.command.StatusWork;
 import sww.lqw.tools.leetcode.work.web.AcceptListWork;
 import sww.lqw.tools.leetcode.work.web.GetCodeWork;
+import sww.lqw.tools.leetcode.work.web.GetDescriptionWork;
 import sww.lqw.tools.leetcode.work.web.LoginWork;
 import sww.lqw.tools.leetcode.work.web.LogoutWork;
 import sww.lqw.tools.leetcode.work.web.SubmissionWork;
@@ -27,6 +28,7 @@ public class Works {
 		workMap.put("clone", new CloneWork());
 		workMap.put("status", new StatusWork());
 		workMap.put("submission", new SubmissionWork());
+		workMap.put("getdescription", new GetDescriptionWork());
 		workMap.put("getcode", new GetCodeWork());
 		workMap.put("file", new FileWork());
 		workMap.put("link", new LinkWork());

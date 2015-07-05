@@ -1,10 +1,7 @@
 package sww.lqw.tools.leetcode.work.web;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
-import java.util.Scanner;
 import java.util.TreeSet;
 
 import sww.lqw.tools.leetcode.bean.Problem;
@@ -12,14 +9,10 @@ import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
 
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.DomElement;
-import com.gargoylesoftware.htmlunit.html.DomNodeList;
-import com.gargoylesoftware.htmlunit.html.HtmlDivision;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 /**
- * get the code and description from leetcode submissions
+ * get the code leetcode submissions
  * 
  * @author quanwei.lqw
  *
@@ -39,43 +32,6 @@ public class GetCodeWork extends AbstractContextWork {
 
 		for (String title : okList) {
 			Problem p = context.getProblem(title);
-			String url = String.format("https://leetcode.com%s", p.getHref());
-			HtmlPage page = webClient.getPage(url);
-
-			DomNodeList<DomElement> divs = page.getElementsByTagName("div");
-			HtmlDivision content = null;
-			for (DomElement div : divs) {
-				if (div.getAttribute("class").equals("question-content")) {
-					content = (HtmlDivision) div;
-					break;
-				}
-			}
-
-			List<String> descriptions = new ArrayList<>();
-			DomNodeList<HtmlElement> hps = content.getElementsByTagName("p");
-			for (HtmlElement hp : hps) {
-				String xml = hp.asXml();
-
-				StringBuilder sb = new StringBuilder();
-				Scanner scan = new Scanner(xml);
-				while (scan.hasNextLine()) {
-					String line = scan.nextLine();
-					sb.append(line);
-				}
-				scan.close();
-				String out = sb.toString().replaceAll(" +", " ");
-				out = out.replaceAll("<p[^>]*>", ">");
-				out = out.replaceAll("</p>", "");
-				if (!out.trim().equals(">")) {
-					descriptions.add(out);
-				}
-			}
-			p.setDescriptions(descriptions);
-			System.out.format("Successfully Obtain description of \"%s\".\n", title);
-			for (String description : descriptions) {
-				System.out.format(" | %s\n", description);
-			}
-
 			HashMap<String, String> mapLangToCode = new HashMap<>();
 			for (Entry<String, String> entry : p.getMapLangToHref().entrySet()) {
 				String language = entry.getKey();
