@@ -13,7 +13,7 @@ public class CloneWork implements IWork {
 	@Override
 	public void run() throws Exception {
 		RunConfig config = RunConfig.getRunConfig();
-		Commands.exec("rm -fR leetcode");
+		Commands.exec("rm -fR "+ config.getRepository());
 		Commands.exec("git clone " + config.getCloneUrl());
 		System.out.println("Successfully clone project from remote.");
 	}

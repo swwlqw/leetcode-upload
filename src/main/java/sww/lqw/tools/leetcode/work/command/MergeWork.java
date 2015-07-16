@@ -2,6 +2,7 @@ package sww.lqw.tools.leetcode.work.command;
 
 import java.io.File;
 
+import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.work.IWork;
 
 /**
@@ -13,7 +14,8 @@ public class MergeWork implements IWork {
 	
 	@Override
 	public void run() throws Exception {
-		File dir = new File("leetcode");
+		RunConfig config = RunConfig.getRunConfig();
+		File dir = new File(config.getRepository());
 		Commands.exec("git checkout auto", dir);
 		Commands.exec("git pull", dir);
 		Commands.exec("git checkout master", dir);

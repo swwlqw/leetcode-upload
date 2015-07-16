@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
 
@@ -22,7 +23,8 @@ public class StatusWork extends AbstractContextWork{
 			throw new WorkException("The Accept List is null");
 		}
 		
-		File dir = new File("leetcode");
+		RunConfig config = RunConfig.getRunConfig();
+		File dir = new File(config.getRepository());
 		Commands.exec("git checkout auto", dir);
 		Commands.exec("git pull", dir);
 		

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
+import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.bean.Problem;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -22,8 +24,8 @@ public class FileWork extends AbstractContextWork {
 		if (okList == null) {
 			throw new WorkException("okList is null!");
 		}
-
-		File dir = new File("leetcode/problems");
+		RunConfig config = RunConfig.getRunConfig();
+		File dir = new File(config.getRepository() + "/" + Const.PROBLEM_DIR );
 		Commands.exec("git checkout auto", dir);
 		for (String title : okList) {
 			Problem p = context.getProblem(title);
@@ -37,8 +39,7 @@ public class FileWork extends AbstractContextWork {
 			System.out.format("Successfully Write File \"%s\"\n", fileName);
 			String addCmd = String.format("git add \"%s\"", fileName);
 			Commands.exec(addCmd, dir);
-			String autoMessage = "Auto commit by https://github.com/swwlqw/leetcode-upload";
-			String commitCmd = String.format("git commit -m \"Create %s (%s)\"", fileName, autoMessage);
+			String commitCmd = String.format("git commit -m \"Create %s (%s)\"", fileName, Const.COMMIT_MESSAGE);
 			Commands.exec(commitCmd, dir);
 			Commands.exec("git push", dir);
 			System.out.format("Successfully push File \"%s\"\n", fileName);

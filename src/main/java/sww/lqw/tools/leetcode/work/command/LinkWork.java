@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.bean.LinkFile;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -24,7 +25,8 @@ public class LinkWork extends AbstractContextWork {
 			throw new WorkException("toLinkList is null!");
 		}
 
-		File dir = new File("leetcode");
+		RunConfig config = RunConfig.getRunConfig();
+		File dir = new File(config.getRepository());
 		Commands.exec("git checkout auto", dir);
 
 		File file = new File(dir, "README.md");
