@@ -6,7 +6,7 @@ public class AutoRunWork implements IWork {
 	 * task list
 	 */
 	private final static String[] tasks = new String[] { "login", "acceptlist", "status", "submission",
-			"getdescription", "getcode", "file", "link" };
+			"gettags", "getcode", "file", "link" };
 
 	@Override
 	public void run() throws Exception {

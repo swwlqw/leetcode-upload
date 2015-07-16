@@ -8,7 +8,7 @@ public class Problem {
 
 	private String href;
 	private HashMap<String, String> mapLangToHref;
-	private List<String> descriptions;
+	private List<String> tags;
 	private HashMap<String, String> mapLangToCode;
 
 	public String getHref() {
@@ -27,12 +27,12 @@ public class Problem {
 		this.mapLangToHref = mapLangToHref;
 	}
 
-	public List<String> getDescriptions() {
-		return descriptions;
+	public List<String> getTags() {
+		return tags;
 	}
 
-	public void setDescriptions(List<String> descriptions) {
-		this.descriptions = descriptions;
+	public void setTags(List<String> tags) {
+		this.tags = tags;
 	}
 
 	public HashMap<String, String> getMapLangToCode() {
@@ -53,8 +53,8 @@ public class Problem {
 		sb.append(title);
 		sb.append("\n\n");
 		
-		for (String description : descriptions){
-			sb.append(description);
+		for (String tag : tags){
+			sb.append(tag);
 			sb.append("\n\n");
 		}
 		
