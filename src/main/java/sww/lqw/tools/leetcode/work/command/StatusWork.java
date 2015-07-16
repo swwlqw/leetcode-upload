@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -30,12 +31,14 @@ public class StatusWork extends AbstractContextWork{
 		
 		@SuppressWarnings("unchecked")
 		TreeSet<String> toUploadList = (TreeSet<String>) acceptList.clone();
-		File problems = new File(dir, "problems");
+		File problems = new File(dir, Const.PROBLEM_DIR);
 		TreeSet<String> mdList= new TreeSet<>();
-		for (File file: problems.listFiles()){
-			String fileName = file.getName();
-			String title = fileName.substring(0, fileName.length()-3);
-			mdList.add(title);
+		if (problems.exists()){
+			for (File file: problems.listFiles()){
+				String fileName = file.getName();
+				String title = fileName.substring(0, fileName.length()-3);
+				mdList.add(title);
+			}
 		}
 		toUploadList.removeAll(mdList);
 		System.out.format("Successfully Obtain the List to Upload (%d/%d).\n", toUploadList.size(), acceptList.size());
