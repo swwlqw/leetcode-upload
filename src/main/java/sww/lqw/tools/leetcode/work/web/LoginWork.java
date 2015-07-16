@@ -2,6 +2,7 @@ package sww.lqw.tools.leetcode.work.web;
 
 import java.util.List;
 
+import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -28,7 +29,7 @@ public class LoginWork extends AbstractContextWork {
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
 
-		HtmlPage page = webClient.getPage("https://leetcode.com/accounts/login/");
+		HtmlPage page = webClient.getPage(Const.LOGIN_URL);
 		HtmlTextInput inputUser = (HtmlTextInput) page.getElementById("id_login");
 		HtmlPasswordInput inputPassword = (HtmlPasswordInput) page.getElementById("id_password");
 		List<HtmlForm> forms = page.getForms();

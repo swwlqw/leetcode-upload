@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.bean.Problem;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -40,7 +41,7 @@ public class SubmissionWork extends AbstractContextWork {
 		System.out.println("Outputing Accepted Language...");
 		for (String title : toUploadList) {
 			Problem p = context.getProblem(title);
-			String url = String.format("https://leetcode.com%ssubmissions/", p.getHref());
+			String url = String.format("%s%ssubmissions/",Const.LEETCODE_URL, p.getHref());
 			HtmlPage page = webClient.getPage(url);
 			HtmlTable table = (HtmlTable) page.getElementById("result_testcases");
 			HtmlTableBody body = table.getBodies().get(0);
@@ -71,5 +72,4 @@ public class SubmissionWork extends AbstractContextWork {
 			System.out.format(" | %d\t| %s\n", i++, title);
 		}
 	}
-
 }

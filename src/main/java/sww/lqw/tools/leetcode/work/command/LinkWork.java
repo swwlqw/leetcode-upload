@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.bean.LinkFile;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
@@ -43,8 +44,7 @@ public class LinkWork extends AbstractContextWork {
 			pw.close();
 			System.out.format("Successfully add link \"%s\"\n", title);
 			Commands.exec("git add README.md", dir);
-			String autoMessage = "Auto commit by https://github.com/swwlqw/leetcode-upload";
-			String commitCmd = String.format("git commit -m \"add link %s (%s)\"", title, autoMessage);
+			String commitCmd = String.format("git commit -m \"add link %s (%s)\"", title, Const.COMMIT_MESSAGE);
 			Commands.exec(commitCmd, dir);
 			Commands.exec("git push", dir);
 			System.out.format("Successfully push link \"%s\"\n", title);

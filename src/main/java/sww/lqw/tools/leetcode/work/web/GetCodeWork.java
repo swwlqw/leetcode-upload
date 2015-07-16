@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.bean.Problem;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -35,7 +36,7 @@ public class GetCodeWork extends AbstractContextWork {
 			HashMap<String, String> mapLangToCode = new HashMap<>();
 			for (Entry<String, String> entry : p.getMapLangToHref().entrySet()) {
 				String language = entry.getKey();
-				String codeUrl = String.format("https://leetcode.com%s", entry.getValue());
+				String codeUrl = String.format("%s%s", Const.LEETCODE_URL, entry.getValue());
 				HtmlPage resultPage = webClient.getPage(codeUrl);
 
 				String origin = resultPage.asXml();

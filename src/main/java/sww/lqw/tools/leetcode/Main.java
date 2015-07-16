@@ -14,15 +14,13 @@ import sww.lqw.tools.leetcode.work.Works;
 
 
 public class Main {
-
-	private final static String CONFIG_FILE_NAME = "config\\run.properties";
 	
 	/**
 	 * read config file, construct RunConfig object.
 	 */
 	private static void loadConfig() throws Exception{
 		Properties props = new Properties();
-		File file = new File(CONFIG_FILE_NAME);
+		File file = new File(Const.CONFIG_FILE_NAME);
 		FileInputStream input = new FileInputStream(file);
 		props.load(input);
 		RunConfig runConfig = RunConfig.getRunConfig();

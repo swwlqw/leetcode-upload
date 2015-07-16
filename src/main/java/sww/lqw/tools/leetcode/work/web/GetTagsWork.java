@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.bean.Problem;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -35,7 +36,7 @@ public class GetTagsWork extends AbstractContextWork {
 
 		for (String title : okList) {
 			Problem p = context.getProblem(title);
-			String url = String.format("https://leetcode.com%s", p.getHref());
+			String url = String.format("%s%s", Const.LEETCODE_URL, p.getHref());
 			HtmlPage page = webClient.getPage(url);
 			DomElement element = page.getElementById("tags");
 			DomElement parent =(DomElement) element.getParentNode();
