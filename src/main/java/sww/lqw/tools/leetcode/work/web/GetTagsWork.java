@@ -39,22 +39,21 @@ public class GetTagsWork extends AbstractContextWork {
 			String url = String.format("%s%s", Const.LEETCODE_URL, p.getHref());
 			HtmlPage page = webClient.getPage(url);
 			DomElement element = page.getElementById("tags");
-			DomElement parent =(DomElement) element.getParentNode();
-			DomNodeList<HtmlElement> domList = parent.getElementsByTagName("a");
-			List<String> descriptions = new ArrayList<>();
-
-			for (HtmlElement a : domList){
-				String href = a.getAttribute("href");
-				String tag = a.getTextContent();
-				descriptions.add(tag+"\t"+href);
+			List<String> tags = new ArrayList<>();
+			if (element != null) {
+				DomElement parent = (DomElement) element.getParentNode();
+				DomNodeList<HtmlElement> domList = parent.getElementsByTagName("a");
+				for (HtmlElement a : domList) {
+					String tag = a.getTextContent();
+					tags.add(tag);
+				}
 			}
-	
-			p.setTags(descriptions);
-			System.out.format("Successfully Obtain description of \"%s\".\n", title);
-			for (String description : descriptions) {
-				System.out.format(" | %s\n", description);
+			p.setTags(tags);
+			System.out.format("Successfully Obtain tags of \"%s\".\n", title);
+			for (String tag : tags) {
+				System.out.format(" | %s\n", tag);
 			}
 		}
 	}
-	
+
 }

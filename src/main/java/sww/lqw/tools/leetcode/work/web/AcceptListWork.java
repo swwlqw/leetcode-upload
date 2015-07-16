@@ -3,6 +3,7 @@ package sww.lqw.tools.leetcode.work.web;
 import java.util.List;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.bean.Problem;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 import sww.lqw.tools.leetcode.work.WorkException;
@@ -30,7 +31,7 @@ public class AcceptListWork extends AbstractContextWork {
 		if (webClient == null) {
 			throw new WorkException("You have not logged in!");
 		}
-		HtmlPage page = webClient.getPage("https://leetcode.com/problemset/algorithms/");
+		HtmlPage page = webClient.getPage(Const.LEETCODE_URL + "/problemset/algorithms/");
 		HtmlTable table = (HtmlTable) page.getElementById("problemList");
 		HtmlTableBody body = table.getBodies().get(0);
 		TreeSet<String> acceptList = new TreeSet<>();
