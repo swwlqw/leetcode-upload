@@ -43,7 +43,6 @@ public class LoginWork extends AbstractContextWork {
 
 		HtmlPage next = button.click();
 		String origin = next.asText();
-		System.out.println(origin);
 		if (origin.contains(String.format("Welcome, %s!", config.getUsername()))) {
 			System.out.format("Successfully logged in as %s\n", config.getUsername());
 			context.login(webClient);
