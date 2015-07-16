@@ -25,7 +25,10 @@ public class FileWork extends AbstractContextWork {
 			throw new WorkException("okList is null!");
 		}
 		RunConfig config = RunConfig.getRunConfig();
-		File dir = new File(config.getRepository() + "/" + Const.PROBLEM_DIR );
+		File dir = new File(config.getRepository() + "/" + Const.PROBLEM_DIR);
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
 		Commands.exec("git checkout auto", dir);
 		for (String title : okList) {
 			Problem p = context.getProblem(title);

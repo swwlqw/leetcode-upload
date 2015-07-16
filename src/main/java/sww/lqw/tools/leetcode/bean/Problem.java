@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
+import sww.lqw.tools.leetcode.Const;
+
 public class Problem {
 
 	private String href;
@@ -46,22 +48,31 @@ public class Problem {
 	public boolean ok() {
 		return mapLangToHref != null && mapLangToHref.size() >= 3;
 	}
-	
-	public String toFileString(String title){
+
+	public String toFileString(String title) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("# ");
 		sb.append(title);
 		sb.append("\n\n");
-		
-		for (String tag : tags){
-			sb.append(tag);
-			sb.append("\n\n");
+
+		String url = Const.LEETCODE_URL + href;
+		String location = String.format("> [%s](%s)\n\n", url, url);
+		sb.append(location);
+
+		if (!tags.isEmpty()) {
+			sb.append("## Tags\n\n");
+			for (String tag : tags) {
+				String tagLocation = String.format("> [%s](../tags/%s.md)", tag, tag);
+				sb.append(tagLocation);
+				sb.append("\n\n");
+			}
 		}
 		
+		sb.append("## Solutions\n\n");
 		for (Entry<String, String> entry : mapLangToCode.entrySet()) {
 			String language = entry.getKey();
 			String code = entry.getValue();
-			sb.append("## ");
+			sb.append("### ");
 			sb.append(language);
 			sb.append("\n\n");
 			sb.append("```");
@@ -71,7 +82,7 @@ public class Problem {
 			sb.append('\n');
 			sb.append("```\n\n");
 		}
-		sb.setLength(sb.length()-2);
+		sb.setLength(sb.length() - 2);
 		return sb.toString();
 	}
 }
