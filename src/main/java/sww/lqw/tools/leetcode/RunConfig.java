@@ -12,11 +12,16 @@ public class RunConfig {
 	 * leetcode password
 	 */
 	private String password;
-
+	
 	/**
-	 * git clone url
+	 * github username or organization
 	 */
-	private String cloneUrl;
+	private String space;
+	
+	/**
+	 * github repository
+	 */
+	private String repository;
 
 
 	private static final RunConfig runConfig = new RunConfig();
@@ -43,13 +48,25 @@ public class RunConfig {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getCloneUrl() {
-		return cloneUrl;
+	
+	public String getSpace() {
+		return space;
 	}
 
-	public void setCloneUrl(String cloneUrl) {
-		this.cloneUrl = cloneUrl;
+	public void setSpace(String space) {
+		this.space = space;
+	}
+
+	public String getRepository() {
+		return repository;
+	}
+
+	public void setRepository(String repository) {
+		this.repository = repository;
+	}
+
+	public String getCloneUrl() {
+		return String.format("git@github.com:%s/%s.git", space, repository);
 	}
 
 	@Override
