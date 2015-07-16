@@ -12,4 +12,6 @@ public interface Const {
 	
 	String PROBLEM_DIR = "problems";
 
+	String README_FILE = "README.md";
+	
 }

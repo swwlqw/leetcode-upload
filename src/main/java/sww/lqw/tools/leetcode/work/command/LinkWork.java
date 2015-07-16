@@ -30,7 +30,7 @@ public class LinkWork extends AbstractContextWork {
 		File dir = new File(config.getRepository());
 		Commands.exec("git checkout auto", dir);
 
-		File file = new File(dir, "README.md");
+		File file = new File(dir, Const.README_FILE);
 		Scanner scan = new Scanner(file);
 		LinkFile lf = new LinkFile();
 		lf.init(scan);
@@ -43,7 +43,7 @@ public class LinkWork extends AbstractContextWork {
 			pw.flush();
 			pw.close();
 			System.out.format("Successfully add link \"%s\"\n", title);
-			Commands.exec("git add README.md", dir);
+			Commands.exec("git add " + Const.README_FILE, dir);
 			String commitCmd = String.format("git commit -m \"add link %s (%s)\"", title, Const.COMMIT_MESSAGE);
 			Commands.exec(commitCmd, dir);
 			Commands.exec("git push", dir);
