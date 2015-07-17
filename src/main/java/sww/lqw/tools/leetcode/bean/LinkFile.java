@@ -34,15 +34,15 @@ public class LinkFile {
 		}
 	}
 
-	public void addLink(String link) {
+	public boolean addLink(String link) {
 		String title = link.substring(0, 1);
 		if (!titles.contains(title)) {
 			titles.add(title);
 			links.put(title, new TreeSet<>());
 		}
-		links.get(title).add(link);
+		return links.get(title).add(link);
 	}
-
+	
 	public String toFileString() {
 		StringBuilder sb = new StringBuilder();
 

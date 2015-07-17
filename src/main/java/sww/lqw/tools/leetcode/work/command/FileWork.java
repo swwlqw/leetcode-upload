@@ -48,7 +48,6 @@ public class FileWork extends AbstractContextWork {
 			System.out.format("Successfully push File \"%s\"\n", fileName);
 		}
 		context.setOkList(null);
-		context.getToLinkList().addAll(okList);
 	}
 
 }
