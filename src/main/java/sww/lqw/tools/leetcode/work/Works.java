@@ -10,6 +10,7 @@ import sww.lqw.tools.leetcode.work.command.LinkWork;
 import sww.lqw.tools.leetcode.work.command.MergeWork;
 import sww.lqw.tools.leetcode.work.command.InitWork;
 import sww.lqw.tools.leetcode.work.command.StatusWork;
+import sww.lqw.tools.leetcode.work.command.TagWork;
 import sww.lqw.tools.leetcode.work.web.AcceptListWork;
 import sww.lqw.tools.leetcode.work.web.GetCodeWork;
 import sww.lqw.tools.leetcode.work.web.GetTagsWork;
@@ -36,6 +37,7 @@ public class Works {
 		workMap.put("merge", new MergeWork());
 		workMap.put("autorun", new AutoRunWork());
 		workMap.put("init", new InitWork());
+		workMap.put("tag", new TagWork());
 	}
 
 	public static IWork getWorkByCommand(String cmd) {
