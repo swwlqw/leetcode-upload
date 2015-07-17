@@ -36,7 +36,7 @@ public class StatusWork extends AbstractContextWork{
 		if (problems.exists()){
 			for (File file: problems.listFiles()){
 				String fileName = file.getName();
-				String title = fileName.substring(0, fileName.length()-3);
+				String title = fileName.substring(0, fileName.length()-4);
 				mdList.add(title);
 			}
 		}
