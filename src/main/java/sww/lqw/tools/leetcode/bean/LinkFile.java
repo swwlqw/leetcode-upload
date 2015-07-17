@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+import sww.lqw.tools.leetcode.Const;
+
 public class LinkFile {
 
 	private List<String> starts = new ArrayList<>();
@@ -55,11 +57,11 @@ public class LinkFile {
 			sb.append("\n\n");
 			TreeSet<String> linkSet = links.get(title);
 			for (String link : linkSet) {
-				String str = String.format("> [%s](problems/%s.md)\n\n", link, link);
+				String str = String.format("> [%s](%s/%s.md)\n\n", link, Const.PROBLEM_DIR, link);
 				sb.append(str);
 			}
 		}
-		sb.setLength(sb.length()-1);
+		sb.setLength(sb.length() - 1);
 		return sb.toString();
 	}
 }
