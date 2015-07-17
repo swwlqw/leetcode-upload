@@ -9,11 +9,13 @@ public interface Const {
 	String DESCRIPTION = "The solutions of leetcode, include Java, C, C++ version.";
 
 	String LEETCODE_URL = "https://leetcode.com";
-	
+
 	String LOGIN_URL = LEETCODE_URL + "/accounts/login/";
 
 	String PROBLEM_DIR = "problems";
 
 	String README_FILE = "README.md";
+
+	String TAG_DIR = "tags";
 
 }

@@ -62,7 +62,7 @@ public class Problem {
 		if (!tags.isEmpty()) {
 			sb.append("## Tags\n\n");
 			for (String tag : tags) {
-				String tagLocation = String.format("> [%s](../tags/%s.md)", tag, tag);
+				String tagLocation = String.format("> [%s](../%s/%s.md)", tag, Const.TAG_DIR, tag);
 				sb.append(tagLocation);
 				sb.append("\n\n");
 			}
