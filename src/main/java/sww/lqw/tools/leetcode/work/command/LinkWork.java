@@ -50,6 +50,7 @@ public class LinkWork extends AbstractContextWork {
 			System.out.format("Successfully push link \"%s\"\n", title);
 		}
 		context.setToLinkList(null);
+		context.setTagList(toLinkList);
 	}
 
 }
