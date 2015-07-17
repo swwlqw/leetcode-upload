@@ -8,9 +8,9 @@ import java.util.TreeSet;
 
 import sww.lqw.tools.leetcode.Const;
 import sww.lqw.tools.leetcode.RunConfig;
+import sww.lqw.tools.leetcode.bean.Problem;
 import sww.lqw.tools.leetcode.bean.TagFile;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
-import sww.lqw.tools.leetcode.work.WorkException;
 
 /**
  * generate files
@@ -22,10 +22,6 @@ public class TagWork extends AbstractContextWork {
 
 	@Override
 	public void run() throws Exception {
-		TreeSet<String> tagList = context.getTagList();
-		if (tagList == null) {
-			throw new WorkException("tagList is null!");
-		}
 
 		RunConfig config = RunConfig.getRunConfig();
 		File dir = new File(config.getRepository() + "/" + Const.TAG_DIR);
@@ -34,8 +30,25 @@ public class TagWork extends AbstractContextWork {
 		}
 		Commands.exec("git checkout auto", dir);
 
-		for (String title : tagList) {
+		File problems = new File(config.getRepository() + "/" + Const.PROBLEM_DIR);
+		TreeSet<String> mdList = new TreeSet<>();
+		if (problems.exists()) {
+			for (File file : problems.listFiles()) {
+				String fileName = file.getName();
+				String title = fileName.substring(0, fileName.length() - 4);
+				mdList.add(title);
+				Problem p = context.getProblem(title);
+				if (p.getTags() == null) {
+					Scanner scan = new Scanner(file);
+					p.initTags(scan);
+					scan.close();
+				}
+			}
+		}
+
+		for (String title : mdList) {
 			List<String> tags = context.getProblem(title).getTags();
+			boolean add = false;
 			if (!tags.isEmpty()) {
 				for (String tag : tags) {
 					File file = new File(dir, tag + ".md");
@@ -45,22 +58,25 @@ public class TagWork extends AbstractContextWork {
 						tf.init(scan);
 						scan.close();
 					}
-					tf.addProblem(title);
-					PrintWriter pw = new PrintWriter(file);
-					pw.write(tf.toFileString());
-					pw.flush();
-					pw.close();
+					if (tf.addProblem(title)) {
+						PrintWriter pw = new PrintWriter(file);
+						pw.write(tf.toFileString());
+						pw.flush();
+						pw.close();
+						System.out.format("Successfully add tag \"%s\" of \"%s\"\n", tag, title);
+						Commands.exec("git add *.md", dir);
+						String start = "git commit -m \"add tag ";
+						String cmd = String.format("%s'%s' of '%s' (%s)\"", start, tag, title, Const.COMMIT_MESSAGE);
+						Commands.exec(cmd, dir);
+						Commands.exec("git push", dir);
+						add = true;
+					}
 				}
-
-				System.out.format("Successfully add tags of \"%s\"\n", title);
-				Commands.exec("git add *.md", dir);
-				String commitCmd = String.format("git commit -m \"add tags of %s (%s)\"", title, Const.COMMIT_MESSAGE);
-				Commands.exec(commitCmd, dir);
-				Commands.exec("git push", dir);
 			}
-			System.out.format("Successfully push tags of \"%s\" (size=%d)\n", title, tags.size());
+			if (add) {
+				System.out.format("Successfully push tags of \"%s\" (size=%d)\n", title, tags.size());
+			}
 		}
-		context.setTagList(null);
 	}
 
 }

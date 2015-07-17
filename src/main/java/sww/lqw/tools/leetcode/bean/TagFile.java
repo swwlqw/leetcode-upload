@@ -28,8 +28,8 @@ public class TagFile {
 		}
 	}
 
-	public void addProblem(String problem) {
-		problems.add(problem);
+	public boolean addProblem(String problem) {
+		return problems.add(problem);
 	}
 
 	public String toFileString() {

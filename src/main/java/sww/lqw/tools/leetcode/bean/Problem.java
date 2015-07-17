@@ -1,8 +1,10 @@
 package sww.lqw.tools.leetcode.bean;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Scanner;
 
 import sww.lqw.tools.leetcode.Const;
 
@@ -67,7 +69,7 @@ public class Problem {
 				sb.append("\n\n");
 			}
 		}
-		
+
 		sb.append("## Solutions\n\n");
 		for (Entry<String, String> entry : mapLangToCode.entrySet()) {
 			String language = entry.getKey();
@@ -84,5 +86,26 @@ public class Problem {
 		}
 		sb.setLength(sb.length() - 2);
 		return sb.toString();
+	}
+
+	public void initTags(Scanner scan) {
+		tags = new LinkedList<>();
+		int state = 0;
+		while (scan.hasNextLine()) {
+			String line = scan.nextLine();
+			if (line.startsWith("## ")) {
+				state++;
+			} else {
+				if (state == 1) {
+					if (line.startsWith("> [")) {
+						int end = line.indexOf(']');
+						String tag = line.substring(3, end);
+						tags.add(tag);
+					}
+				} else if (state > 1) {
+					break;
+				}
+			}
+		}
 	}
 }
