@@ -33,7 +33,7 @@ public class FileWork extends AbstractContextWork {
 		for (String title : okList) {
 			Problem p = context.getProblem(title);
 			String context = p.toFileString(title);
-			String fileName = title + ".md";
+			String fileName = title + " .md";
 			File file = new File(dir, fileName);
 			PrintWriter pw = new PrintWriter(file);
 			pw.write(context);

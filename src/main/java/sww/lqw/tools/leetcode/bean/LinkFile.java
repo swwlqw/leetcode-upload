@@ -57,7 +57,7 @@ public class LinkFile {
 			sb.append("\n\n");
 			TreeSet<String> linkSet = links.get(title);
 			for (String link : linkSet) {
-				String str = String.format("> [%s](%s/%s.md)\n\n", link, Const.PROBLEM_DIR, link);
+				String str = String.format("> [%s](%s/%s .md)\n\n", link, Const.PROBLEM_DIR, link);
 				sb.append(str);
 			}
 		}

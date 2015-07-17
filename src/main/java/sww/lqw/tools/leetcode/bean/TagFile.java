@@ -40,7 +40,7 @@ public class TagFile {
 		sb.append("\n\n");
 
 		for (String problem : problems) {
-			String str = String.format("> [%s](%s/%s.md)\n\n", problem, Const.PROBLEM_DIR, problem);
+			String str = String.format("> [%s](../%s/%s .md)\n\n", problem, Const.PROBLEM_DIR, problem);
 			sb.append(str);
 		}
 
