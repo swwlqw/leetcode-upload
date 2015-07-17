@@ -6,7 +6,7 @@ import sww.lqw.tools.leetcode.RunConfig;
 import sww.lqw.tools.leetcode.work.IWork;
 
 /**
- * clone leetcode project from github
+ * merge branch auto->master
  * @author sww
  *
  */

@@ -11,7 +11,7 @@ import sww.lqw.tools.leetcode.bean.LinkFile;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 
 /**
- * generate files
+ * add link in README.md
  * 
  * @author quanwei.lqw
  *

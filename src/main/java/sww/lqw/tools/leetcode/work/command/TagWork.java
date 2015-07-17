@@ -13,7 +13,7 @@ import sww.lqw.tools.leetcode.bean.TagFile;
 import sww.lqw.tools.leetcode.work.AbstractContextWork;
 
 /**
- * generate files
+ * generate tag files
  * 
  * @author quanwei.lqw
  *

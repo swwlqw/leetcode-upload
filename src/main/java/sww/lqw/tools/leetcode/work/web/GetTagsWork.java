@@ -16,7 +16,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 /**
- * get description from leetcode
+ * get problem tags from leetcode
  * 
  * @author quanwei.lqw
  *
