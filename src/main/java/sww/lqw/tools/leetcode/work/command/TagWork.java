@@ -29,10 +29,10 @@ public class TagWork extends AbstractContextWork {
 
 		RunConfig config = RunConfig.getRunConfig();
 		File dir = new File(config.getRepository() + "/" + Const.TAG_DIR);
-		Commands.exec("git checkout auto", dir);
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
+		Commands.exec("git checkout auto", dir);
 
 		for (String title : tagList) {
 			List<String> tags = context.getProblem(title).getTags();
