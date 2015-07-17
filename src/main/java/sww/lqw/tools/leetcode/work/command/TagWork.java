@@ -63,17 +63,15 @@ public class TagWork extends AbstractContextWork {
 						pw.write(tf.toFileString());
 						pw.flush();
 						pw.close();
-						System.out.format("Successfully add tag \"%s\" of \"%s\"\n", tag, title);
-						Commands.exec("git add *.md", dir);
-						String start = "git commit -m \"add tag ";
-						String cmd = String.format("%s'%s' of '%s' (%s)\"", start, tag, title, Const.COMMIT_MESSAGE);
-						Commands.exec(cmd, dir);
-						Commands.exec("git push", dir);
 						add = true;
 					}
 				}
 			}
 			if (add) {
+				Commands.exec("git add *.md", dir);
+				String cmd = String.format("git commit -m \"add tags of '%s' (%s)\"", title, Const.COMMIT_MESSAGE);
+				Commands.exec(cmd, dir);
+				Commands.exec("git push", dir);
 				System.out.format("Successfully push tags of \"%s\" (size=%d)\n", title, tags.size());
 			}
 		}
